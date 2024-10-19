@@ -75,14 +75,15 @@ public class Main {
 
     public static String getStringData(){
        Scanner keyboard = new Scanner(System.in);
+       keyboard.nextLine();
         String userName=keyboard.nextLine();
-       // close Scanner;
+    // Scanner.close();
         return userName;
     }
     public static int getUsermarks(){
         Scanner keyboard = new Scanner(System.in);
         int marks=keyboard.nextInt();
-        //close Scanner;
+       // Scanner.close();
         return marks;
     }
 }
