@@ -19,6 +19,7 @@ public class Main {
         int userChoice=1;
         int count=0;
         while(userChoice==1){
+
             if(count<5){
                 System.out.print("Enter the reg number of the student (no/year):");
                 regNumber[count]=getStringData();
@@ -39,34 +40,21 @@ public class Main {
                 total[count]=ccs2211[count]+ccs2212[count]+ccs2213[count]+ccs2214[count]+ccs2215[count];
                 average[count]=total[count]/totalUnits;
 
-                if ((average[count] >= 70.0) && (average[count] <= 100.0))
-                    grade[count] = 'A';
-                else if (average[count] >= 60.0)
-                    grade[count] = 'B';
-                else if (average[count] >= 50.0)
-                    grade[count] = 'C';
-                else if (average[count] >= 40.0)
-                    grade[count] = 'D';
-                else if ((average[count] >= 0.0) && (average[count] < 40.0))
-                    grade[count] = 'E';
+                grade[count]= gradeEvaluation(average[count]);
 
             }else{
                 System.out.println("Sorry you can only enter data for 5 students!!");
             }
-            System.out.print("kindly enter 1 if you want to proceed and 0 if you want to display the Score Sheet :");
+            System.out.print("kindly enter 1 if you want to proceed or any other if you want to display the Score Sheet :");
             userChoice=input.nextInt();
             count++;
             System.out.println();
 
         }
-        while(userChoice==0){
-            System.out.println();
-            System.out.println("Student Score sheet");
-            System.out.println("----------------------------------------------------------------------------------------------------");
-            System.out.println("Reg No.    Full Name   CCS2211  CCS2212   CCS2213   CCS2214     CCS2215  total    average    Grade");
-            System.out.println("----------------------------------------------------------------------------------------------------");
+        while(userChoice!=1){
+            displayScoreSheet();
            for(int i=0;i<count;++i){
-                System.out.println(regNumber[i]+"  "+studentName[i]+"        "+ccs2211[i]+"        "+ccs2212[i]+"        "+ccs2213[i]+"        "+ccs2214[i]+"        "+ccs2215[i]+"        "+total[i]+"        "+average[i]+"        "+grade[i]+" ");
+                System.out.println(regNumber[i]+"  "+studentName[i]+"        "+ccs2211[i]+"       "+ccs2212[i]+"         "+ccs2213[i]+"        "+ccs2214[i]+"          "+ccs2215[i]+"      "+total[i]+"       "+average[i]+"        "+grade[i]+" ");
 
         }
             userChoice = 1;
@@ -75,15 +63,32 @@ public class Main {
 
     public static String getStringData(){
        Scanner keyboard = new Scanner(System.in);
-       keyboard.nextLine();
         String userName=keyboard.nextLine();
-    // Scanner.close();
         return userName;
     }
     public static int getUsermarks(){
         Scanner keyboard = new Scanner(System.in);
         int marks=keyboard.nextInt();
-       // Scanner.close();
         return marks;
+    }
+    public static char gradeEvaluation(double average) {
+        if ((average >= 70.0) && (average <= 100.0))
+            return 'A';
+        else if (average >= 60.0)
+            return 'B';
+        else if (average >= 50.0)
+            return 'C';
+        else if (average >= 40.0)
+            return 'D';
+        else// if ((average >= 0.0) && (average < 40.0))
+            return 'E';
+
+    }
+    public static void displayScoreSheet(){
+        System.out.println();
+        System.out.println("Student Score sheet");
+        System.out.println("----------------------------------------------------------------------------------------------------");
+        System.out.println("Reg No.    Full Name   CCS2211    CCS2212   CCS2213   CCS2214     CCS2215  total    average    Grade");
+        System.out.println("----------------------------------------------------------------------------------------------------");
     }
 }
