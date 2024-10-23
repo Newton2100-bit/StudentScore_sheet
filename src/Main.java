@@ -1,76 +1,88 @@
 import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-   // Scanner input = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
+    public static int totalUnits = 5;
+    public static String[] studentName = new String[5];
+    public static String[] regNumber = new String[5];
+    public static int[] ccs2211 = new int[5];
+    public static int[] ccs2212 = new int[5];
+    public static int[] ccs2213 = new int[5];
+    public static int[] ccs2214 = new int[5];
+    public static int[] ccs2215 = new int[5];
+    public static char[] grade = new char[5];
+    public static int[] total = new int[5];
+    public static double[] average = new double[5];
+    public static int count = 0;
+   public static int userChoice = 1;
+
     public static void main(String[] args) {
-        int totalUnits = 5;
-        String[] studentName = new String[5];
-        String[] regNumber = new String[5];
-        int[] ccs2211 = new int[5];
-        int[] ccs2212 = new int[5];
-        int[] ccs2213 = new int[5];
-        int[] ccs2214 = new int[5];
-        int[] ccs2215 = new int[5];
-        char[] grade = new char[5];
-        int[] total = new int[5];
-        double[] average = new double[5];
-        Scanner input = new Scanner(System.in);
-
-        int userChoice=1;
-        int count=0;
-        while(userChoice==1){
-
-            if(count<5){
-                System.out.print("Enter the reg number of the student (no/year):");
-                regNumber[count]=getStringData();
-                System.out.print("Kindly enter the name of student "+(count+1)+":");
-                studentName[count]=getStringData();
-                System.out.print("Kindly enter the marks obtained in ccs2211 by student "+(count+1)+":");
-                ccs2211[count]=getUsermarks();
-                System.out.print("Kindly enter the marks obtained in ccs2212 by student "+(count+1)+":");
-                ccs2212[count]=getUsermarks();
-                System.out.print("Kindly enter the marks obtained in ccs2213 by student "+(count+1)+":");
-                ccs2213[count]=getUsermarks();
-                System.out.print("Kindly enter the marks obtained in ccs2214 by student "+(count+1)+":");
-                ccs2214[count]=getUsermarks();
-                System.out.print("Kindly enter the marks obtained in ccs2215 by student "+(count+1)+":");
-                ccs2215[count]=getUsermarks();
-                System.out.println();
-                System.out.println();
-                total[count]=ccs2211[count]+ccs2212[count]+ccs2213[count]+ccs2214[count]+ccs2215[count];
-                average[count]=total[count]/totalUnits;
-
-                grade[count]= gradeEvaluation(average[count]);
-
-            }else{
-                System.out.println("Sorry you can only enter data for 5 students!!");
+        while (userChoice == 1) {
+            if (count < 5) {
+                enterData();
+                marksCalculation();
+                count++;
+            } else {
+                errorMessage();
             }
-            System.out.print("kindly enter 1 if you want to proceed or any other if you want to display the Score Sheet :");
-            userChoice=input.nextInt();
-            count++;
-            System.out.println();
-
+            userDecision();
         }
-        while(userChoice!=1){
+
+        while (userChoice != 1) {
             displayScoreSheet();
-           for(int i=0;i<count;++i){
-                System.out.println(regNumber[i]+"  "+studentName[i]+"        "+ccs2211[i]+"       "+ccs2212[i]+"         "+ccs2213[i]+"        "+ccs2214[i]+"          "+ccs2215[i]+"      "+total[i]+"       "+average[i]+"        "+grade[i]+" ");
-
-        }
+            for (int i = 0; i < count; ++i) {
+                System.out.println(regNumber[i] + "  " + studentName[i] + "        " + ccs2211[i] + "       " + ccs2212[i] + "         " + ccs2213[i] + "        " + ccs2214[i] + "          " + ccs2215[i] + "      " + total[i] + "       " + average[i] + "        " + grade[i] + " ");
+            }
             userChoice = 1;
         }
+
     }
 
-    public static String getStringData(){
-       Scanner keyboard = new Scanner(System.in);
-        String userName=keyboard.nextLine();
-        return userName;
+    public static void userDecision(){
+        System.out.print("kindly enter 1 if you want to proceed or any other if you want to display the Score Sheet :");
+        userChoice = input.nextInt();
+        System.out.println();
     }
-    public static int getUsermarks(){
-        Scanner keyboard = new Scanner(System.in);
-        int marks=keyboard.nextInt();
-        return marks;
+
+    public static void errorMessage(){
+        System.out.println("Sorry you can only enter data for 5 students!!");
+        System.out.println();
     }
+
+    public static void enterData() {
+        if (count < 5) {
+            getDetails();
+            getMarks();
+            }
+        }
+
+        public static void getDetails() {
+            System.out.print("Enter the reg number of the student (no/year):");
+            regNumber[count] = getStringData();
+            System.out.print("Kindly enter the name of student " + (count + 1) + ":");
+            studentName[count] = getStringData();
+        }
+
+        public static void getMarks(){
+            System.out.print("Kindly enter the marks obtained in ccs2211 by student " + (count + 1) + ":");
+            ccs2211[count] = getUsermarks();
+            System.out.print("Kindly enter the marks obtained in ccs2212 by student " + (count + 1) + ":");
+            ccs2212[count] = getUsermarks();
+            System.out.print("Kindly enter the marks obtained in ccs2213 by student " + (count + 1) + ":");
+            ccs2213[count] = getUsermarks();
+            System.out.print("Kindly enter the marks obtained in ccs2214 by student " + (count + 1) + ":");
+            ccs2214[count] = getUsermarks();
+            System.out.print("Kindly enter the marks obtained in ccs2215 by student " + (count + 1) + ":");
+            ccs2215[count] = getUsermarks();
+            System.out.println();
+        }
+
+        public static void marksCalculation(){
+            total[count] = ccs2211[count] + ccs2212[count] + ccs2213[count] + ccs2214[count] + ccs2215[count];
+            average[count] = total[count] / totalUnits;
+            grade[count] = gradeEvaluation(average[count]);
+        }
+
     public static char gradeEvaluation(double average) {
         if ((average >= 70.0) && (average <= 100.0))
             return 'A';
@@ -80,11 +92,26 @@ public class Main {
             return 'C';
         else if (average >= 40.0)
             return 'D';
-        else// if ((average >= 0.0) && (average < 40.0))
+        else
             return 'E';
 
     }
-    public static void displayScoreSheet(){
+
+
+    public static String getStringData() {
+        Scanner keyboard = new Scanner(System.in);
+        String userName = keyboard.nextLine();
+        return userName;
+    }
+
+    public static int getUsermarks() {
+        Scanner keyboard = new Scanner(System.in);
+        int marks = keyboard.nextInt();
+        return marks;
+    }
+
+
+    public static void displayScoreSheet() {
         System.out.println();
         System.out.println("Student Score sheet");
         System.out.println("----------------------------------------------------------------------------------------------------");
