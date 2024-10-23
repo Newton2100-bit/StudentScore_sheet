@@ -61,19 +61,28 @@ public class Main {
             studentName[count] = getStringData();
         }
 
+    static int course=1;
+
+
         public static void getMarks(){
-            System.out.print("Enter the marks obtained in ccs2211 by student " + (count + 1) + ":");
+        userPrompt();
             ccs2211[count] = getUsermarks();
-            System.out.print("Enter the marks obtained in ccs2212 by student " + (count + 1) + ":");
+            userPrompt();
             ccs2212[count] = getUsermarks();
-            System.out.print("Enter the marks obtained in ccs2213 by student " + (count + 1) + ":");
+            userPrompt();
             ccs2213[count] = getUsermarks();
-            System.out.print("Enter the marks obtained in ccs2214 by student " + (count + 1) + ":");
+            userPrompt();
             ccs2214[count] = getUsermarks();
-            System.out.print("Enter the marks obtained in ccs2215 by student " + (count + 1) + ":");
+            userPrompt();
             ccs2215[count] = getUsermarks();
             System.out.println();
+            course=1;
         }
+
+    public static void userPrompt(){
+        System.out.print("Enter the marks obtained in ccs221"+course+" by student " + (count + 1) + ":");
+        ++course;
+    }
 
         public static void marksCalculation(){
             total[count] = ccs2211[count] + ccs2212[count] + ccs2213[count] + ccs2214[count] + ccs2215[count];
