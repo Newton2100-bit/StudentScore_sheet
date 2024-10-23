@@ -30,9 +30,7 @@ public class Main {
 
         while (userChoice != 1) {
             displayScoreSheet();
-            for (int i = 0; i < count; ++i) {
-                System.out.println(regNumber[i] + "  " + studentName[i] + "        " + ccs2211[i] + "       " + ccs2212[i] + "         " + ccs2213[i] + "        " + ccs2214[i] + "          " + ccs2215[i] + "      " + total[i] + "       " + average[i] + "        " + grade[i] + " ");
-            }
+            displayStudentsMarks();
             userChoice = 1;
         }
 
@@ -117,5 +115,10 @@ public class Main {
         System.out.println("----------------------------------------------------------------------------------------------------");
         System.out.println("Reg No.    Full Name   CCS2211    CCS2212   CCS2213   CCS2214     CCS2215  total    average    Grade");
         System.out.println("----------------------------------------------------------------------------------------------------");
+    }
+    public static void displayStudentsMarks(){
+        for (int i = 0; i < count; ++i) {
+            System.out.println(regNumber[i] + "  " + studentName[i] + "        " + ccs2211[i] + "       " + ccs2212[i] + "         " + ccs2213[i] + "        " + ccs2214[i] + "          " + ccs2215[i] + "      " + total[i] + "       " + average[i] + "        " + grade[i] + " ");
+        }
     }
 }
