@@ -2,19 +2,19 @@ import java.util.Scanner;//TIP To <b>Run</b> code, press <shortcut actionId="Run
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static Scanner input = new Scanner(System.in);
-    public static int totalUnits = 5;
-    public static String[] studentName = new String[5];
-    public static String[] regNumber = new String[5];
-    public static int[] ccs2211 = new int[5];
-    public static int[] ccs2212 = new int[5];
-    public static int[] ccs2213 = new int[5];
-    public static int[] ccs2214 = new int[5];
-    public static int[] ccs2215 = new int[5];
-    public static char[] grade = new char[5];
-    public static int[] total = new int[5];
-    public static double[] average = new double[5];
-    public static int count = 0;
-   public static int userChoice = 1;
+    static int totalUnits = 5;
+    static String[] studentName = new String[5];
+    static String[] regNumber = new String[5];
+    static int[] ccs2211 = new int[5];
+    static int[] ccs2212 = new int[5];
+    static int[] ccs2213 = new int[5];
+    static int[] ccs2214 = new int[5];
+    static int[] ccs2215 = new int[5];
+    static char[] grade = new char[5];
+    static int[] total = new int[5];
+    static double[] average = new double[5];
+    static int count = 0;
+    static int userChoice = 1;
 
     public static void main(String[] args) {
         while (userChoice == 1) {
@@ -37,7 +37,7 @@ public class Main {
     }
 
     public static void userDecision(){
-        System.out.print("kindly enter 1 if you want to proceed or any other if you want to display the Score Sheet :");
+        System.out.print("Enter 1 to proceed ,Any other number to display score sheet :");
         userChoice = input.nextInt();
         System.out.println();
     }
@@ -62,15 +62,15 @@ public class Main {
         }
 
         public static void getMarks(){
-            System.out.print("Kindly enter the marks obtained in ccs2211 by student " + (count + 1) + ":");
+            System.out.print("Enter the marks obtained in ccs2211 by student " + (count + 1) + ":");
             ccs2211[count] = getUsermarks();
-            System.out.print("Kindly enter the marks obtained in ccs2212 by student " + (count + 1) + ":");
+            System.out.print("Enter the marks obtained in ccs2212 by student " + (count + 1) + ":");
             ccs2212[count] = getUsermarks();
-            System.out.print("Kindly enter the marks obtained in ccs2213 by student " + (count + 1) + ":");
+            System.out.print("Enter the marks obtained in ccs2213 by student " + (count + 1) + ":");
             ccs2213[count] = getUsermarks();
-            System.out.print("Kindly enter the marks obtained in ccs2214 by student " + (count + 1) + ":");
+            System.out.print("Enter the marks obtained in ccs2214 by student " + (count + 1) + ":");
             ccs2214[count] = getUsermarks();
-            System.out.print("Kindly enter the marks obtained in ccs2215 by student " + (count + 1) + ":");
+            System.out.print("Enter the marks obtained in ccs2215 by student " + (count + 1) + ":");
             ccs2215[count] = getUsermarks();
             System.out.println();
         }
@@ -116,9 +116,12 @@ public class Main {
         System.out.println("Reg No.    Full Name   CCS2211    CCS2212   CCS2213   CCS2214     CCS2215  total    average    Grade");
         System.out.println("----------------------------------------------------------------------------------------------------");
     }
+
     public static void displayStudentsMarks(){
         for (int i = 0; i < count; ++i) {
-            System.out.println(regNumber[i] + "  " + studentName[i] + "        " + ccs2211[i] + "       " + ccs2212[i] + "         " + ccs2213[i] + "        " + ccs2214[i] + "          " + ccs2215[i] + "      " + total[i] + "       " + average[i] + "        " + grade[i] + " ");
+            System.out.print(regNumber[i] + "  " + studentName[i] + "        " + ccs2211[i] + "       " + ccs2212[i]  );
+            System.out.print("         " + ccs2213[i] + "        " + ccs2214[i] + "          " + ccs2215[i] + "      " );
+            System.out.println(total[i] + "       " + average[i] + "        " + grade[i] + " ");
         }
     }
 }
